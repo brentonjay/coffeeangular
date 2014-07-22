@@ -44,6 +44,15 @@ var app = angular.module('coffeeApp', []);
 			$scope.brewerchoice = name;
 		};
 		
+		$scope.brewprofiles = [];
+		
+		$scope.addBrewProfile = function(user, brewerchoice) {
+			var g = $scope.user.grinder.name;
+			var m = $scope.user.model.name;
+			var c = $scope.brewerchoice;
+			$scope.brewprofiles.push({profile:$scope.brewprofiles.length + 1,grinder:g,model:m,brewer:c});			
+		};
+		
 
 		$scope.update = function(user) {
 			$scope.master = angular.copy(user);		  
