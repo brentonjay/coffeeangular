@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="coffeeApp" class="no-js"> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Coffee. Yum.</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="/app/bower_components/html5-boilerplate/css/normalize.css">
+		<link rel="stylesheet" href="/app/bower_components/html5-boilerplate/css/main.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css">
+		<link rel="stylesheet" href="/app/css/app.css"/>
+		
+		<style type="text/css">
+			input.ng-invalid.ng-dirty {
+				background-color: #FA787E;
+			}
+
+			input.ng-valid.ng-dirty {
+				background-color: #78FA89;
+			}
+		</style>
+	</head>
+	<body ng-controller="CoffeeController as coffee">
+		<div class="row">
+			<div class="container">
+				<nav class="navbar navbar-default" role="navigation">
+					<div class="container">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="#">Coffee. Yum.</a>
+						</div>
+					</div>
+				</nav>			
+			</div>		
+		</div>
+		<div class="row">
+			<div class="container">
+				<h1>Coffee. Yum.</h1>
+				<p>Welcome to nerdi.ac, where your wildest dreams will come true.</p>
+				<p>To use nerdi.ac, you'll need to give us either your twitter or Google+ credentials. But once you do, we'll go help you track and refine your daily brew, and we'll also give you tools to learn from others who are just as nerdy as you. We'll also hook you up with great offers from the best roasters in the world. We're able to do that because we're going to be taking your anonymous data and sending it to them, because you represent a very valuable kind of customer to them: the kind that really, really freaking loves coffee. They're hoping they can convince you to become a fan of their roasts, and share that passion with others, and therefore, they'll gain customers. We think of it as a win-win.</p>
+				<p>Obviously, you'll need to check this terms and conditions box, and you should definitely read the associated document first. But if you're too excited to sign up to read it now, the gist is this: we're definitely tracking your data, but we are definitely NOT putting your name on it. So you're totally anonymous, but totally part of what amounts to a distributed scientific experiment dedicated to making the very best hand-brewed coffee the world has ever seen. Rock!</p>
+			</div>		
+		</div>
+		<div class="row">
+			<div class="container">
+				<footer id="footer">
+					<p>I'm just saying.</p>
+				</footer>			
+			</div>
+		</div>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="/app/bower_components/angular/angular.js"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="/app/js/app.js"></script>
+	</body>
+</html>

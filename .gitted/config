@@ -1,0 +1,11 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "mydir"]
+	url = git@github.com:brentonjay/angularcoffee.git
+	fetch = +refs/heads/*:refs/remotes/mydir/*
+[remote "origin"]
+	url = git@github.com:brentonjay/angularcoffee.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
