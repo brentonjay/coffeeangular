@@ -38,9 +38,10 @@ var app = angular.module('coffeeApp', []);
 			$scope.brewers.push({name:b});	
 		};
 		
+		$scope.brewerchoice;
+		
 		$scope.selectBrewer = function(name) {
-			console.log("hey, i'm sending you in the " + name);
-			var chosenBrewer = name;
+			$scope.brewerchoice = name;
 		};
 		
 

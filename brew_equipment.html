@@ -40,41 +40,45 @@
 		</div>
 		<div class="row">
 			<div class="container">
-				<form class="simple-form">
-					<div class="form-group">
-						<label for="grinderBrand">Grinder: </label>
-						<select type="select" id="grinderBrand" ng-model="user.grinder" ng-options="x as x.name for x in grinders" ></select>
-						<label for="grinderBrandNotListed">Not Listed?</label>						
-						<input type="text" id="grinderBrandNotListed" ng-model="user.addgrinderinput" />
-						<button type="button" class="btn btn-primary" ng-click="addGrinder()" value="Add Grinder">Add</button>
-					</div>
-					<div class="form-group">
-						<label for="grinderModel">Model: </label>
-						<select type="select" id="grinderModel" ng-model="user.model" ng-options="y as y.name for y in models"></select>
-						<input type="text" id="modelNumberNotListed" ng-model="user.addmodelinput" />
-						<button type="button" class="btn btn-primary" ng-click="addModel()" value="Add Model">Add</button>
-					</div>
-					<div class="form-group">
-						<label for="inputBrewer">Brew Equipment: </label>
-						<input type="text" class="form-control" id="inputBrewer" placeholder="Input Brewer" ng-model="user.addbrewer">
-						<button type="button" class="btn btn-primary" ng-click="addBrewer()" value="Add Brewer">Add</button>
-					</div>
-					<ul>						
-						<li ng-repeat="brewer in brewers" class="{{$index}}">{{brewer.name}} | <a ng-click="selectBrewer(brewer.name)">Select this brewer</a></li>
-					</ul>	
-					<button type="reset" class="btn btn-default" ng-click="reset()">RESET</button>
-					<button type="submit" class="btn btn-default" ng-click="update(user)">SAVE</button>
-				</form>
-				<pre>form = {{user | json}}</pre>
-				<pre>master = {{master | json}}</pre>				
+				<div class="col-md-8 col-md-offset-2">
+					<form class="simple-form">
+						<div class="form-group">
+							<label for="grinderBrand">Grinder: </label>
+							<select type="select" id="grinderBrand" ng-model="user.grinder" ng-options="x as x.name for x in grinders" ></select>
+							<label for="grinderBrandNotListed">Not Listed?</label>						
+							<input type="text" id="grinderBrandNotListed" ng-model="user.addgrinderinput" />
+							<button type="button" class="btn btn-primary" ng-click="addGrinder()" value="Add Grinder">Add</button>
+						</div>
+						<div class="form-group">
+							<label for="grinderModel">Model: </label>
+							<select type="select" id="grinderModel" ng-model="user.model" ng-options="y as y.name for y in models"></select>
+							<input type="text" id="modelNumberNotListed" ng-model="user.addmodelinput" />
+							<button type="button" class="btn btn-primary" ng-click="addModel()" value="Add Model">Add</button>
+						</div>
+						<div class="form-group">
+							<label for="inputBrewer">Brew Equipment: </label>
+							<input type="text" class="form-control" id="inputBrewer" placeholder="Input Brewer" ng-model="user.addbrewer">
+							<button type="button" class="btn btn-primary" ng-click="addBrewer()" value="Add Brewer">Add</button>
+						</div>
+						<ul>						
+							<li ng-repeat="brewer in brewers" class="{{$index}}">{{brewer.name}} | <a ng-click="selectBrewer(brewer.name)">Select this brewer</a></li>
+						</ul>	
+						<button type="reset" class="btn btn-default" ng-click="reset()">RESET</button>
+						<button type="submit" class="btn btn-default" ng-click="update(user)">SAVE</button>
+					</form>
+					<pre>form = {{user | json}}</pre>
+					<pre>master = {{master | json}}</pre>	
+				</div>			
 			</div>		
 		</div>
 		<div class="row">
 			<div class="container">
 				<div class="col-md-4">
 					<div class="well">
-						<h4 class="cardname"></h4>
-						<p>Body</p>
+						<h4>Brew Profile:</h4>
+						<p>Grinder: {{user.grinder.name}}</p>
+						<p>Model #: {{user.model.name}}</p>
+						<p>Brewer: {{brewerchoice}}</p>
 					</div>
 				</div>
 			</div>
