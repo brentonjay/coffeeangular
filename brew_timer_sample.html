@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AngularJS Example - Single Timer Example</title>		
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="/app/bower_components/angular/angular.js"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="/app/js/app.js"></script>
+		<script src="app/js/timer.js"></script>
+</head>
+<body ng-app="timerApp">
+    <div ng-controller="TimerAppController">
+        <h1>AngularJS - Single Timer Example</h1>
+        <h3><timer/></h3>
+        <p><timer interval="1000"><div class="progress progress-striped active"> <div class="bar" style="width: {{seconds}}%;"></div> </div></timer></p>
+        <button ng-click="startTimer()" ng-disabled="timerRunning">Start Timer</button>
+        <button ng-click="stopTimer()" ng-disabled="!timerRunning">Stop Timer</button>
+    </div>
+    <br/>
+</body>
+</html>

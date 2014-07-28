@@ -1,5 +1,3 @@
-'use strict';
-
 var app = angular.module('coffeeApp', []);
 
 	app.controller('CoffeeController', function($scope, $http){
@@ -60,9 +58,28 @@ var app = angular.module('coffeeApp', []);
 		};
 
 		$scope.reset = function() {
-		  $scope.user = angular.copy($scope.master);
+			$scope.user = angular.copy($scope.master);
 		};
 
 		$scope.reset();
 	});
 
+var timer = angular.module('timerApp', ['timer']);
+        function TimerAppController($scope) {
+            $scope.timerRunning = true;
+ 
+            $scope.startTimer = function (){
+                $scope.$broadcast('timer-start');
+                $scope.timerRunning = true;
+            };
+ 
+            $scope.stopTimer = function (){
+                $scope.$broadcast('timer-stop');
+                $scope.timerRunning = false;
+            };
+ 
+            $scope.$on('timer-stopped', function (event, data){
+                console.log('Timer Stopped - data = ', data);
+            });
+        }
+        TimerAppController.$inject = ['$scope'];
