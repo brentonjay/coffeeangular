@@ -65,8 +65,18 @@ var app = angular.module('coffeeApp', []);
 	});
 
 var timer = angular.module('timerApp', ['timer']);
-        function TimerAppController($scope) {
-            $scope.timerRunning = true;
+        function TimerController($scope) {
+			
+			$scope.updateTimer = function(){
+				var t = $scope.bloomLength + $scope.brewLength + $scope.pressLength;
+				console.log(t);				
+			};
+            
+            $scope.bloomTimer = function () {
+                $scope.$broadcast('timer-add-cd-seconds', $scope.bloomLength);
+            }
+
+            $scope.timerRunning = false;
  
             $scope.startTimer = function (){
                 $scope.$broadcast('timer-start');
@@ -82,4 +92,4 @@ var timer = angular.module('timerApp', ['timer']);
                 console.log('Timer Stopped - data = ', data);
             });
         }
-        TimerAppController.$inject = ['$scope'];
+        TimerController.$inject = ['$scope'];
