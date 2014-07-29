@@ -30,15 +30,20 @@
 		
 		<button type="button" class="btn btn-primary btn-sm" ng-click="updateTimer()" value="Update Timer">Update Timer</button>
 	
-        <p>{{bloomLength + brewLength}} = bloomLength</p>
+        <p>{{bloomLength}} = bloomLength</p>
         <p>{{brewLength}} = brewLength</p>
         <p>{{pressLength}} = pressLength</p>
         <p>{{timerTime}} = timerTime</p>
         
-        <div id="countdown-timer">
-			<timer interval="1000" autostart="false" countdown="0.1">{{countdown}}</timer>
-			<button ng-click="bloomTimer()">Add Countdown From Bloom</button>
-        </div>
+
+		<timer interval="1000" autostart="false" countdown="0.1">{{countdown}}</timer>
+		<p><button ng-click="bloomTimer()">Add Countdown From Bloom</button></p>
+		<p><button ng-click="startTimer()" ng-disabled="timerRunning">Start Timer</button></p>
+		<p><button ng-click="stopTimer()" ng-disabled="!timerRunning">Stop Timer</button></p>
+		
+        
+        
+        
 
         
         <!--
@@ -50,8 +55,7 @@
 			</div>
 		</timer>
 		-->
-        <button ng-click="startTimer()" ng-disabled="timerRunning">Start Timer</button>
-        <button ng-click="stopTimer()" ng-disabled="!timerRunning">Stop Timer</button>
+
 			<hr />
 			<div class="row">
 				<div class="col-md-4 col-md-offset-4">					

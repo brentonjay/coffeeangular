@@ -71,12 +71,12 @@ var timer = angular.module('timerApp', ['timer']);
 				var t = $scope.bloomLength + $scope.brewLength + $scope.pressLength;
 				console.log(t);				
 			};
+
+            $scope.timerRunning = false;
             
             $scope.bloomTimer = function () {
                 $scope.$broadcast('timer-add-cd-seconds', $scope.bloomLength);
             }
-
-            $scope.timerRunning = false;
  
             $scope.startTimer = function (){
                 $scope.$broadcast('timer-start');
