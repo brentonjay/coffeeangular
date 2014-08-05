@@ -65,11 +65,17 @@ var app = angular.module('coffeeApp', []);
 	});
 
 var timer = angular.module('timerApp', []);
-		timer.controller("TimerController", function($scope,$timeout){
+		timer.controller("TimerController", function($scope,$timeout) {
 			$scope.pressVal = 0;
-			$scope.timerVal = ($scope.bloomVal + $scope.brewVal + $scope.pressVal);
 			var stopped;
+			var totalTime;
 			// $scope.timer;
+			
+			
+			$scope.timerVal = function() {
+				var totalTime = ($scope.bloomVal + $scope.brewVal + $scope.pressVal);
+				return totalTime;
+			};
  
 			$scope.countdown = function() {
 				stopped = $timeout(function() {
@@ -80,7 +86,10 @@ var timer = angular.module('timerApp', []);
 			};
  
 			$scope.loadVals = function() {
-				$scope.timer = ($scope.bloomVal + $scope.brewVal + $scope.pressVal);				
+				$scope.timer = ($scope.bloomVal + $scope.brewVal + $scope.pressVal);	
+				$scope.bloomPerc = (($scope.bloomVal) / ($scope.timer) * 100);			
+				$scope.brewPerc = (($scope.brewVal) / ($scope.timer) * 100);			
+				$scope.pressPerc = (($scope.pressVal) / ($scope.timer) * 100);		
 			};
    
 			$scope.countdownInput = function() {
