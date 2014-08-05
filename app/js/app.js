@@ -64,32 +64,34 @@ var app = angular.module('coffeeApp', []);
 		$scope.reset();
 	});
 
-var timer = angular.module('timerApp', ['timer']);
-        function TimerController($scope) {
-			
-			$scope.updateTimer = function(){
-				var t = $scope.bloomLength + $scope.brewLength + $scope.pressLength;
-				console.log(t);				
+var timer = angular.module('timerApp', []);
+		timer.controller("TimerController", function($scope,$timeout){
+			$scope.pressVal = 0;
+			$scope.timerVal = ($scope.bloomVal + $scope.brewVal + $scope.pressVal);
+			var stopped;
+			// $scope.timer;
+ 
+			$scope.countdown = function() {
+				stopped = $timeout(function() {
+					console.log($scope.counter);
+					$scope.counter--;   
+					$scope.countdown();   
+				}, 1000);
 			};
-
-            $scope.timerRunning = false;
-            
-            $scope.bloomTimer = function () {
-                $scope.$broadcast('timer-add-cd-seconds', $scope.bloomLength);
-            }
  
-            $scope.startTimer = function (){
-                $scope.$broadcast('timer-start');
-                $scope.timerRunning = true;
-            };
- 
-            $scope.stopTimer = function (){
-                $scope.$broadcast('timer-stop');
-                $scope.timerRunning = false;
-            };
- 
-            $scope.$on('timer-stopped', function (event, data){
-                console.log('Timer Stopped - data = ', data);
-            });
-        }
-        TimerController.$inject = ['$scope'];
+			$scope.loadVals = function() {
+				$scope.timer = ($scope.bloomVal + $scope.brewVal + $scope.pressVal);				
+			};
+   
+			$scope.countdownInput = function() {
+				stopped = $timeout(function() {
+					console.log($scope.timer);
+					$scope.timer--;   
+					$scope.countdownInput();   
+				}, 1000);
+			};   
+    
+			$scope.stop = function() {
+				$timeout.cancel(stopped);
+			} 
+		});

@@ -8,61 +8,55 @@
 		<script src="/app/bower_components/angular/angular.js"></script>
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script src="/app/js/app.js"></script>
-		<script src="app/js/timer.js"></script>
 </head>
 <body ng-app="timerApp">
-    <div ng-controller="TimerController as timer">
-        <h1>Timing.</h1>
-        <div class="form-group">
-			<label for="bloomLength">How Long Is the Bloom Gonna Be? (In seconds, please)</label>	
-			<input type="number" id="bloomLength" ng-model="bloomLength" />
-		</div>
-        
-        <div class="form-group">
-			<label for="brewLength">How Long Is the Brewing Time Gonna Be? (In seconds, please)</label>	
-			<input type="number" id="brewLength" ng-model="brewLength" />
-		</div>
-        
-        <div class="form-group">
-			<label for="pressLength">How Long Is the Press Gonna Be? (In seconds, please)</label>	
-			<input type="number" id="pressLength" ng-model="pressLength" />
-		</div>
-		
-		<button type="button" class="btn btn-primary btn-sm" ng-click="updateTimer()" value="Update Timer">Update Timer</button>
-	
-        <p>{{bloomLength}} = bloomLength</p>
-        <p>{{brewLength}} = brewLength</p>
-        <p>{{pressLength}} = pressLength</p>
-        <p>{{timerTime}} = timerTime</p>
-        
-
-		<timer interval="1000" autostart="false" countdown="0.1">{{countdown}}</timer>
-		<p><button ng-click="bloomTimer()">Add Countdown From Bloom</button></p>
-		<p><button ng-click="startTimer()" ng-disabled="timerRunning">Start Timer</button></p>
-		<p><button ng-click="stopTimer()" ng-disabled="!timerRunning">Stop Timer</button></p>
-		
-        
-        
-        
-
-        
-        <!--
-        <timer interval="1000" autostart="false">
-			<div class="progress">
-				<div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="{{seconds}}" aria-valuemin="0" aria-valuemax="500" style="width: {{brewLength}}%">
-					<span class="sr-only">{{brewLength}}% Complete</span>
-				</div>
-			</div>
-		</timer>
-		-->
-
-			<hr />
+    <div ng-controller="TimerController as timer">		
+		<div class="container">
 			<div class="row">
-				<div class="col-md-4 col-md-offset-4">					
-					<pre>form = {{user | json}}</pre>
-					<pre>master = {{master | json}}</pre>
+				<nav class="navbar navbar-default" role="navigation">
+					<div class="container">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="#">Coffee. Yum.</a>
+						</div>
+					</div>
+				</nav>			
+			</div>		
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<form>
+						<div class="form-group row">
+							<h1>Timing.</h1>
+							<div class="form-group">
+								<label for="bloomLength">How Long Is the Bloom Gonna Be? (In seconds, please)</label>	
+								<input type="number" id="bloomLength" ng-model="bloomVal" required />
+							</div>
+							
+							<div class="form-group">
+								<label for="brewLength">How Long Is the Brewing Time Gonna Be? (In seconds, please)</label>	
+								<input type="number" id="brewLength" ng-model="brewVal" required />
+							</div>
+							
+							<div class="form-group">
+								<label for="pressLength">How Long Is the Press Gonna Be? (In seconds, please)</label>	
+								<input type="number" id="pressLength" ng-model="pressVal" />
+							</div>							
+
+        
+							<h3>{{timer}}</h3> 
+							<button ng-click="loadVals()">Calculate Brew Time</button>   
+							<button ng-click="countdownInput()">Start</button>  
+							<button ng-click="stop()">Pause</button>  
+						</div>
+					</form>
 				</div>
 			</div>
+		</div>
     </div>
     <br/>
 </body>

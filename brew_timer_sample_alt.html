@@ -9,58 +9,62 @@
 </head>
 
 
-<body ng-app="mehmetcankerApp">
- <!--counterCtrl App Controller -->   
-<div ng-controller="counterCtrl">
- <!--Angular Binding -->  
- 
- <input type="number" ng-model="startVal" />
- 
- <p>{{startVal}}</p>
- 
-<p ng-bind="counter"></p>
-    <button ng-click="stop()">Stop</button>
-    <button ng-click="countdown()">Start</button>     
-</div>
+<body ng-app="timerApp">
+	<div ng-controller="counterCtrl">
+
+		<input type="number" ng-model="bloomVal" />
+		<input type="number" ng-model="brewVal" />
+		<input type="number" ng-model="pressVal" />
+		<input type="number" ng-model="startVal" />
+
+		<h2>{{bloomVal + brewVal + pressVal}}</h2>
+		<h3>{{timer}}</h3>
+
+		<h4>{{counter}}</h4>
+		<button ng-click="stop()">Stop</button>
+		<button ng-click="countdown()">Start</button>     
+		<button ng-click="countdownInput()">Start</button>     
+		<button ng-click="loadVals()">loadVals</button>     
+	</div>
 
 	<script>
-	 var myModule = angular.module("mehmetcankerApp", [/* No Dependency Injection */]);
-//Modulu olusturduk. Modul herhangi bir DI'ye ihtiyaç duymuyor
-
-
-//timeout and scope are Angular's built-in services
-//Adding injector
-//Module timeout ve scope servislerini ekledik. Bunlar Anguların bizim için sağladığı yapısal servislerdir.
-myModule.controller("counterCtrl",['$scope','$timeout', function($scope,$timeout){
-
-var sv = Number($scope.startVal);
-
-$scope.counter = sv;
-var stopped;
-
-//timeout function
-//1000 milliseconds = 1 second
-//Every second counts
-//Cancels a task associated with the promise. As a result of this, the //promise will be resolved with a rejection.  
-$scope.countdown = function() {
-    stopped = $timeout(function() {
-       console.log($scope.counter);
-     $scope.counter--;   
-     $scope.countdown();   
-    }, 1000);
-  };
+		
+		var myModule = angular.module("timerApp", []);
+		myModule.controller("counterCtrl",['$scope','$timeout', function($scope,$timeout){
+			$scope.counter = 100;
+			$scope.timerVal = ($scope.bloomVal + $scope.brewVal + $scope.pressVal);
+			var stopped;
+			// $scope.timer;
+ 
+			$scope.countdown = function() {
+				stopped = $timeout(function() {
+					console.log($scope.counter);
+					$scope.counter--;   
+					$scope.countdown();   
+				}, 1000);
+			};
+ 
+			$scope.loadVals = function() {
+				$scope.timer = ($scope.bloomVal + $scope.brewVal + $scope.pressVal);				
+			};
    
+			$scope.countdownInput = function() {
+				stopped = $timeout(function() {
+					console.log($scope.timer);
+					$scope.timer--;   
+					$scope.countdownInput();   
+				}, 1000);
+			};   
     
-$scope.stop = function(){
-   $timeout.cancel(stopped);
-    
-    } 
+			$scope.stop = function(){
+				$timeout.cancel(stopped);
+			} 
+		}]);
 
-
-}]);
-	
+		// http://stackoverflow.com/questions/15072152/angularjs-input-model-changes-from-integer-to-string-when-changed
+		// http://codepen.io/MehmetCanker/pen/jluqp
 	
 	</script>
 
   
-  </body>
+</body>
