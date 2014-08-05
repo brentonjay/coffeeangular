@@ -1,26 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="coffeeApp" class="no-js"> <!--<![endif]-->
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Coffee. Yum.</title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+<head>
+    <title>Coffee. Yum. TIMER!</title>		
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css">
-		<link rel="stylesheet" href="/app/css/app.css"/>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="/app/bower_components/angular/angular.js"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="/app/js/app.js"></script>
 		
-		<style type="text/css">
-			input.ng-invalid.ng-dirty {
-				background-color: #FA787E;
-			}
-
-			input.ng-valid.ng-dirty {
-				background-color: #78FA89;
+		<style>
+			.progress {
+				height: 30px;
 			}
 		</style>
-	</head>
-	<body ng-controller="CoffeeController as coffee">
+</head>
+<body ng-app="timerApp">
+    <div ng-controller="TimerController as timer">		
 		<div class="container">
 			<div class="row">
 				<nav class="navbar navbar-default" role="navigation">
@@ -38,21 +34,72 @@
 				</nav>			
 			</div>		
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
-					<timer interval="1000"><div class="progress progress-striped active"> <div class="bar" style="width: {{seconds}}%;"></div> </div></timer>					
-				</div>			
-			</div>		
-			<hr />
+				<div class="col-md-12">
+					<div class="form-group">
+						<div class="form-group">
+							<label for="bloomLength">Bloom Length (in seconds)</label>	
+							<input type="number" id="bloomLength" ng-model="bloomVal" required />
+						</div>
+						
+						<div class="form-group">
+							<label for="brewLength">Brew Length (in seconds)</label>	
+							<input type="number" id="brewLength" ng-model="brewVal" required />
+						</div>
+						
+						<div class="form-group">
+							<label for="pressLength">Press Length (in seconds)</label>	
+							<input type="number" id="pressLength" ng-model="pressVal" />
+						</div>	
+					</div>
+				</div>
+			</div>
 			<div class="row">
-				<div class="col-md-4 col-md-offset-4">					
-					<pre>form = {{user | json}}</pre>
-					<pre>master = {{master | json}}</pre>
+				<div class="col-md-12">
+					<button ng-click="loadVals()">Prepare Timer</button>   
+					<button ng-click="countdownInput()">Start</button>  
+					<button ng-click="stop()">Pause</button> 
+				</div>						
+			</div>
+			
+			<hr />
+				
+			<div class="row">
+				<div class="col-md-1">Bloom:</div>
+				<div class="col-md-11">
+					<div class="progress">
+						<div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: {{((timer - brewVal - pressVal) / (timerVal() - brewVal - pressVal)) * 100}}%">
+						</div>
+					</div>								
+				</div>								
+			</div>
+			
+			<div class="row">
+				<div class="col-md-1">Brew:</div>
+				<div class="col-md-11">
+					<div class="progress">
+						<div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: {{((timer - pressVal) / (timerVal() - bloomVal - pressVal)) * 100}}%">
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-1">Press:</div>
+				<div class="col-md-11">
+					<div class="progress">
+						<div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{((timer) / (timerVal() - brewVal - bloomVal)) * 100}}%">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h3>Total Brew Time: {{timerVal()}}</h3> 
+					<h3>Total Brew Time Remaining: {{timer}}</h3>  							
 				</div>
 			</div>
 		</div>
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script src="/app/bower_components/angular/angular.js"></script>
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-		<script src="/app/js/app.js"></script>
-	</body>
+    </div>
+    <br/>
+</body>
 </html>
