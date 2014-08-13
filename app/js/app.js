@@ -66,6 +66,8 @@ var app = angular.module('coffeeApp', []);
 
 var timer = angular.module('timerApp', []);
 		timer.controller("TimerController", function($scope,$timeout) {
+			$scope.bloomVal = 0;
+			$scope.brewVal = 0;
 			$scope.pressVal = 0;
 			var stopped;
 			var totalTime;			
@@ -96,5 +98,12 @@ var timer = angular.module('timerApp', []);
     
 			$scope.stop = function() {
 				$timeout.cancel(stopped);
-			} 
+			}; 
+			
+			$scope.reset = function() {
+				$scope.bloomVal = 0;
+				$scope.brewVal = 0;
+				$scope.pressVal = 0;
+				$scope.brewprep.$setPristine();
+			};
 		});

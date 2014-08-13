@@ -45,7 +45,7 @@
 					</div>
 				</nav>			
 			</div>		
-			<form name="brewprep" id="brewprep" novalidate>
+			<form name="brewprep" id="brewprep" ng-hide="false" novalidate>
 				<div class="row">
 					<div class="col-md-4">
 						<div class="form-group" ng-class="{ 'has-error' : brewprep.bloomLength.$invalid && !brewprep.bloomLength.$pristine }">
@@ -76,9 +76,10 @@
 			<hr />
 			<div class="row">
 				<div class="col-md-12">
-					<button type="button" class="btn btn-large btn-primary" ng-click="submitForm(brewprep.$valid)" ng-disabled="brewprep.$invalid" type="submit">Set/Reset Timer</button>   
+					<button type="button" class="btn btn-large btn-primary" ng-click="submitForm(brewprep.$valid)" ng-disabled="brewprep.$invalid" type="submit">Set Timer</button>   
 					<button type="button" class="btn btn-large btn-success" ng-click="countdownInput()" ng-disabled="timer != timerVal()" >Start</button>  
 					<button type="button" class="btn btn-large btn-warning" ng-click="stop()">Pause</button> 
+					<button type="button" class="btn btn-large btn-info" ng-click="reset()" ng-disabled="brewprep.$invalid" type="submit">Start Over</button>  
 				</div>						
 			</div>			
 			<hr />
@@ -115,8 +116,9 @@
 				<div class="row">
 					<div class="col-md-12">	
 						<h3 class="center-block timertext">Total Brew Time:</h3>
-						<h3 class="center-block timernumber"><span ng-class="{'text-success': (((timer - brewVal - pressVal) / (timerVal() - brewVal - pressVal)) * 100) > 0 && (((timer - brewVal - pressVal) / (timerVal() - brewVal - pressVal)) * 100) <= 100, 'text-primary': (((timer - pressVal) / (timerVal() - bloomVal - pressVal)) * 100) > 0 && (((timer - pressVal) / (timerVal() - bloomVal - pressVal)) * 100) <= 100, 'text-danger': (((timer) / (timerVal() - brewVal - bloomVal)) * 100) > 0 && (((timer) / (timerVal() - brewVal - bloomVal)) * 100) <= 100}">{{(timer * 1000) | date:'mm:ss'}}</span> / {{(timerVal() * 1000) | date:'mm:ss'}}</h3>	
-						<ul>
+						<h3 class="center-block timernumber" ng-show="(((timer) / (timerVal() - brewVal - bloomVal)) * 100) > 0"><span ng-class="{'text-success': (((timer - brewVal - pressVal) / (timerVal() - brewVal - pressVal)) * 100) > 0 && (((timer - brewVal - pressVal) / (timerVal() - brewVal - pressVal)) * 100) <= 100, 'text-primary': (((timer - pressVal) / (timerVal() - bloomVal - pressVal)) * 100) > 0 && (((timer - pressVal) / (timerVal() - bloomVal - pressVal)) * 100) <= 100, 'text-danger': (((timer) / (timerVal() - brewVal - bloomVal)) * 100) > 0 && (((timer) / (timerVal() - brewVal - bloomVal)) * 100) <= 100}">{{(timer * 1000) | date:'mm:ss'}}</span> / {{(timerVal() * 1000) | date:'mm:ss'}}</h3>	
+						<h3 class="timertext" ng-hide="(((timer) / (timerVal() - brewVal - bloomVal)) * 100) > 0">Brew Complete! You rule!</h3>
+						<ul ng-hide="true">
 							<li>bloomPerc = {{((timer - brewVal - pressVal) / (timerVal() - brewVal - pressVal)) * 100}}</li>
 							<li>brewPerc = {{((timer - pressVal) / (timerVal() - bloomVal - pressVal)) * 100}}</li>
 							<li>pressPerc = {{((timer) / (timerVal() - brewVal - bloomVal)) * 100}}</li>
