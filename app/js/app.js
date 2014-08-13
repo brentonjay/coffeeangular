@@ -9,7 +9,7 @@ var app = angular.module('coffeeApp', []);
             {id:3,name:'Capresso'},
             {id:4,name:'Bodum'},
             {id:5,name:'Other'}
-            ];
+		];
             
         $scope.addGrinder = function() {
 			var g = $scope.user.addgrinderinput;
@@ -22,7 +22,7 @@ var app = angular.module('coffeeApp', []);
             {id:3,name:'35939'},
             {id:4,name:'953883'},
             {id:5,name:'123'}
-            ];
+		];
             
         $scope.addModel = function() {
 			var m = $scope.user.addmodelinput;
@@ -68,28 +68,22 @@ var timer = angular.module('timerApp', []);
 		timer.controller("TimerController", function($scope,$timeout) {
 			$scope.pressVal = 0;
 			var stopped;
-			var totalTime;
-			// $scope.timer;
-			
+			var totalTime;			
 			
 			$scope.timerVal = function() {
 				var totalTime = ($scope.bloomVal + $scope.brewVal + $scope.pressVal);
 				return totalTime;
 			};
- 
-			$scope.countdown = function() {
-				stopped = $timeout(function() {
-					console.log($scope.counter);
-					$scope.counter--;   
-					$scope.countdown();   
-				}, 1000);
-			};
- 
-			$scope.loadVals = function() {
-				$scope.timer = ($scope.bloomVal + $scope.brewVal + $scope.pressVal);	
-				$scope.bloomPerc = (($scope.bloomVal) / ($scope.timer) * 100);			
-				$scope.brewPerc = (($scope.brewVal) / ($scope.timer) * 100);			
-				$scope.pressPerc = (($scope.pressVal) / ($scope.timer) * 100);		
+
+			$scope.submitForm = function(isValid) {
+				if (isValid) {
+					$scope.timer = ($scope.bloomVal + $scope.brewVal + $scope.pressVal);	
+					$scope.bloomPerc = (($scope.bloomVal) / ($scope.timer) * 100);			
+					$scope.brewPerc = (($scope.brewVal) / ($scope.timer) * 100);			
+					$scope.pressPerc = (($scope.pressVal) / ($scope.timer) * 100);	
+				}
+				else {
+				};
 			};
    
 			$scope.countdownInput = function() {
