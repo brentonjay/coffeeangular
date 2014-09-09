@@ -3,19 +3,6 @@ var app = angular.module('coffeeApp', []);
 	app.controller('CoffeeController', function($scope, $http){
 		$scope.master = {};
 		
-		$scope.grinders = [
-            {id:1,name:'Baratza'},
-            {id:2,name:'Cuisinart'},
-            {id:3,name:'Capresso'},
-            {id:4,name:'Bodum'},
-            {id:5,name:'Other'}
-		];
-            
-        $scope.addGrinder = function() {
-			var g = $scope.user.addgrinderinput;
-			$scope.grinders.push({id:$scope.grinders.length + 1,name:g});
-		};
-		
 		$scope.models = [
             {id:1,name:'1200'},
             {id:2,name:'13000'},
@@ -40,6 +27,19 @@ var app = angular.module('coffeeApp', []);
 		
 		$scope.selectBrewer = function(name) {
 			$scope.brewerchoice = name;
+		};
+		
+		$scope.grinders = [
+            {id:1,name:'Baratza'},
+            {id:2,name:'Cuisinart'},
+            {id:3,name:'Capresso'},
+            {id:4,name:'Bodum'},
+            {id:5,name:'Other'}
+		];
+            
+        $scope.addGrinder = function() {
+			var g = $scope.user.addgrinderinput;
+			$scope.grinders.push({id:$scope.grinders.length + 1,name:g});
 		};
 		
 		$scope.brewprofiles = [];

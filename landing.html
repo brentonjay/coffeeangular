@@ -6,58 +6,79 @@
 		<title>Coffee. Yum.</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="/app/bower_components/html5-boilerplate/css/normalize.css">
-		<link rel="stylesheet" href="/app/bower_components/html5-boilerplate/css/main.css">
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css">
-		<link rel="stylesheet" href="/app/css/app.css"/>
-		
-		<style type="text/css">
-			input.ng-invalid.ng-dirty {
-				background-color: #FA787E;
-			}
-
-			input.ng-valid.ng-dirty {
-				background-color: #78FA89;
-			}
-		</style>
+		<link href='http://fonts.googleapis.com/css?family=Lato:300,900' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Allan' rel='stylesheet' type='text/css'>
 	</head>
-	<body ng-controller="CoffeeController as coffee">
-		<div class="row">
-			<div class="container">
-				<nav class="navbar navbar-default" role="navigation">
-					<div class="container">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							<a class="navbar-brand" href="#">Coffee. Yum.</a>
-						</div>
-					</div>
-				</nav>			
-			</div>		
-		</div>
-		<div class="row">
-			<div class="container">
-				<h1>Coffee. Yum.</h1>
-				<p>Welcome to nerdi.ac, where your wildest dreams will come true.</p>
-				<p>To use nerdi.ac, you'll need to give us either your twitter or Google+ credentials. But once you do, we'll go help you track and refine your daily brew, and we'll also give you tools to learn from others who are just as nerdy as you. We'll also hook you up with great offers from the best roasters in the world. We're able to do that because we're going to be taking your anonymous data and sending it to them, because you represent a very valuable kind of customer to them: the kind that really, really freaking loves coffee. They're hoping they can convince you to become a fan of their roasts, and share that passion with others, and therefore, they'll gain customers. We think of it as a win-win.</p>
-				<p>Obviously, you'll need to check this terms and conditions box, and you should definitely read the associated document first. But if you're too excited to sign up to read it now, the gist is this: we're definitely tracking your data, but we are definitely NOT putting your name on it. So you're totally anonymous, but totally part of what amounts to a distributed scientific experiment dedicated to making the very best hand-brewed coffee the world has ever seen. Rock!</p>
-			</div>		
-		</div>
-		<div class="row">
-			<div class="container">
+	<body ng-controller="CoffeeController as coffee">		
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<h1>Brew Smarter</h1>					
+				</div>
+				<div class="col-sm-11 col-sm-offset-1">	
+					<h3>welcome to nerdius</h3>
+					<p>
+						<a class="btn btn-primary" href="signup">Quick-Start</a>					
+					</p>				
+				</div>
+			</div>	
+			<hr />
+			<div class="row">
+				<div class="col-md-12">
+					<h2>Coffee Rules</h2>
+					<p>Not the evil mass-produced, devoid-of-soul stuff for caffiene transferrance purposes. And also not that stuff with milk and sugar. We mean hand-created stuff where you can actually talk reasonably about flavor notes and mouthfeel, either at your local shop or at home.</p>
+					<p class="pull-right">
+						<a class="btn btn-primary" href="signup">Sweet! I'm In!</a>
+					</p>
+				</div>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-md-12">
+					<h2>That's Where We Come In</h2>
+					<p>For us, making coffee is part morning ritual, part science experiment. We used to keep track of our daily brew with an expensive, leatherbound notebook and a fountain pen, but now we use nerdius. Because the only thing better than meticulously keeping track of your brew is sharing the love with others.</p>
+					<p class="pull-right">
+						<a class="btn btn-primary" href="signup">Cool! Let's Rock!</a>
+					</p>
+				</div>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-md-12">
+					<h2>How We're Sharing the Love</h2>
+					<p>When you use nerdius, you're contributing to a distributed, worldwide experiement with likeminded individuals, all in pursuit of the best cup of coffee possible. With your contributions, we're crunching the numbers, providing recommendations and brew recipes, locating legit shops, and most importantly, helping you enjoy the best coffee on earth.</p>
+					<p class="pull-right">
+						<a class="btn btn-primary" href="signup">Nifty! Start the Magic!</a>
+					</p>
+				</div>
+			</div>
+			<div class="row">
 				<footer id="footer">
 					<p>I'm just saying.</p>
 				</footer>			
-			</div>
+			</div>	
 		</div>
+		
+		<link rel="stylesheet" type="text/less" href="/app/less/bootstrap.less"/>		
+		<script>
+			less = {
+				env: "development",
+				logLevel: 2,
+				async: false,
+				fileAsync: false,
+				poll: 1000,
+				functions: {},
+				dumpLineNumbers: "comments",
+				relativeUrls: false
+			};
+		</script>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.4/less.min.js"></script>
 		<script src="/app/bower_components/angular/angular.js"></script>
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script src="/app/js/app.js"></script>
+		
+		
+
 	</body>
 </html>
