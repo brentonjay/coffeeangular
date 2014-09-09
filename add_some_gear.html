@@ -30,12 +30,14 @@
 									</h4>
 								</div>
 								<div id="grinding" class="panel-collapse collapse in">
-									<div class="panel-body">
+									<div class="panel-body form-horizontal">
 										<div class="form-group">	
 											<label class="col-sm-3 control-label" for="grinderBrand">Grinder Brand: </label>
 											<div class="col-sm-9">
 												<select type="select" class="form-control" id="grinderBrand" ng-model="user.grinder" ng-options="x as x.name for x in grinders" ></select>
-											</div>
+											</div>											
+										</div>	
+										<div class="form-group">	
 											<label class="col-sm-3 control-label" for="grinderBrandNotListed">Brand Not Listed?</label>
 											<div class="col-sm-9">	
 												<div class="input-group">				
@@ -45,22 +47,23 @@
 													</span>
 												</div>	
 											</div>
-										</div>										
-										<p>&nbsp;</p>										
+										</div>												
 										<div class="form-group">
 											<label class="col-sm-3 control-label" for="grinderModel">Grinder Model: </label>
 											<div class="col-sm-9">
 												<select type="select" class="form-control" id="grinderModel" ng-model="user.model" ng-options="y as y.name for y in models"></select>
-											</div>
+											</div>						
+										</div>	
+										<div class="form-group">	
 											<label class="col-sm-3 control-label" for="modelNumberNotListed">Model Not Listed?</label>	
 											<div class="col-sm-9">
 												<input type="text" class="form-control" id="modelNumberNotListed" ng-model="user.addmodelinput" placeholder="Enter Model" />
 												<button type="button" class="btn btn-primary btn-sm" ng-click="addModel()" value="Add Model">Add</button>
 											</div>
-										</div>
-										<p>&nbsp;</p>										
+										</div>		
+										<h5>Available Grinders:</h5>							
 										<ul>						
-											<li ng-repeat="grinder in grinders" class="{{$index}}">{{grinder.name}} | <a ng-click="selectGrinder(grinder.name)">Select this grinder</a></li>
+											<li ng-repeat="grinder in grinders" class="{{$index}}">{{grinder.name}} {{grinder.model}} | <a ng-click="selectGrinder(grinder.name)">Select this grinder</a></li>
 										</ul>	
 									</div>
 								</div>
@@ -74,8 +77,19 @@
 									</h4>
 								</div>
 								<div id="brewing" class="panel-collapse collapse">
-									<div class="panel-body">
-									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+									<div class="panel-body form-horizontal">		
+										<div class="form-group">
+											<label class="col-sm-3 control-label" for="inputBrewer">Brew Equipment: </label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control" id="inputBrewer" placeholder="Input Brewer" ng-model="user.addbrewer">
+											</div>
+											<div class="col-sm-9 col-sm-offset-3">
+												<button type="button" class="btn btn-primary" ng-click="addBrewer()" value="Add Brewer">Add</button>
+											</div>
+										</div>
+										<ul>						
+											<li ng-repeat="brewer in brewers" class="{{$index}}">{{brewer.name}} | <a ng-click="selectBrewer(brewer.name)">Select this brewer</a></li>
+										</ul>
 									</div>
 								</div>
 							</div>
@@ -83,7 +97,7 @@
 								<div class="panel-heading">
 									<h4 class="panel-title">
 										<a data-toggle="collapse" data-parent="#accordion" href="#pouring">
-										Pouring
+										Pouring Apparatus
 										</a>
 									</h4>
 								</div>
@@ -108,42 +122,29 @@
 								</div>
 							</div>
 						</div>
-						
-
-						
-						<div class="form-group row">
-							<div class="col-md-8">
-								<label for="inputBrewer">Brew Equipment: </label>
-								<input type="text" class="form-control" id="inputBrewer" placeholder="Input Brewer" ng-model="user.addbrewer">
-							</div>
-							<div class="col-md-4">
-								<button type="button" class="btn btn-primary" ng-click="addBrewer()" value="Add Brewer">Add</button>
-							</div>
-						</div>
 						<div class="row">
-							<ul>						
-								<li ng-repeat="brewer in brewers" class="{{$index}}">{{brewer.name}} | <a ng-click="selectBrewer(brewer.name)">Select this brewer</a></li>
-							</ul>	
-						</div>
-						<div class="row">
-							<button type="reset" class="btn btn-default" ng-click="reset()">Reset Form</button>
-							<button type="submit" class="btn btn-default" ng-click="update(user)">Save Changes</button>
-							<button type="submit" class="btn btn-default" ng-click="addBrewProfile()">Add To New Profile</button>
+							<div class="col-md-12">
+								<button type="reset" class="btn btn-default" ng-click="reset()">Reset Form</button>
+								<button type="submit" class="btn btn-default" ng-click="update(user)">Save Changes</button>
+								<button type="submit" class="btn btn-default" ng-click="addBrewProfile()">Add To New Profile</button>
+							</div>
 						</div>
 					</form>	
 				</div>			
 			</div>		
 			<div class="row">
-				<h3>Available Profiles</h3>
-				<div ng-repeat="profile in brewprofiles" class="col-md-4">
-					<div class="well">
-						<h4>Brew Profile #{{profile.profile}}:</h4>
-						<p>Grinder: {{profile.grinder}}</p>
-						<p>Model #: {{profile.model}}</p>
-						<p>Brewer: {{profile.brewer}}</p>
-						<p class="pull-right">
-							<button class="btn btn-primary">Use Profile</button>
-						</p>
+				<div class="col-md-12">
+					<h3>Available Profiles</h3>
+					<div ng-repeat="profile in brewprofiles" class="col-md-4">
+						<div class="well">
+							<h4>Brew Profile #{{profile.profile}}:</h4>
+							<p>Grinder: {{profile.grinder}}</p>
+							<p>Model #: {{profile.model}}</p>
+							<p>Brewer: {{profile.brewer}}</p>
+							<p class="pull-right">
+								<button class="btn btn-primary">Use Profile</button>
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>
