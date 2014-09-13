@@ -1,4 +1,45 @@
-var app = angular.module('coffeeApp', []);
+var app = angular.module('coffeeApp', ['ngRoute']);
+
+	app.config(function($routeProvider) {
+		$routeProvider
+			.when('/', {
+				templateUrl : 'app/partials/landing.html',
+				controller  : 'landingController'
+			})
+			.when('/signin', {
+				templateUrl : 'app/partials/signin.html',
+				controller  : 'signinController'
+			})
+			.when('/addgear', {
+				templateUrl : 'app/partials/addgear.html',
+				controller  : 'addgearController'
+			})
+			.when('/almostready', {
+				templateUrl : 'app/partials/almostready.html',
+				controller  : 'almostreadyController'
+			})
+			.otherwise('/', {
+				templateUrl : 'app/partials/landing.html',
+				controller 	: 'landingController'
+			});
+	});
+	
+	app.controller('landingController', function($scope){
+		$scope.thing = 'this is a landing thing';
+	});
+	
+	app.controller('signinController', function($scope){
+		$scope.thing = 'this is a signin thing';
+	});
+	
+	app.controller('addgearController', function($scope){
+		$scope.thing = 'this is an addgear thing';
+	});
+	
+	app.controller('almostreadyController', function($scope){
+		$scope.thing = 'this is an addgear thing';
+	});
+	
 
 	app.controller('CoffeeController', function($scope, $http){
 		$scope.master = {};

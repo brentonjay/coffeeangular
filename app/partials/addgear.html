@@ -1,0 +1,147 @@
+		<!-- welcome to the addgear partial. enjoy your stay -->
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1>ADD SOME GEAR</h1>
+					<p class="intro">Nerd time. Go ahead, impress us. Once you add your brewing equipment, you won't have to visit this page again. (Until your birthday.)</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<form>						
+						<div class="panel-group" id="accordion">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordion" href="#grinding">
+											Add Grinding Equipment
+										</a>
+									</h4>
+								</div>
+								<div id="grinding" class="panel-collapse collapse in">
+									<div class="panel-body form-horizontal">
+										<div class="form-group">	
+											<label class="col-sm-3 control-label" for="grinderBrand">Grinder Brand: </label>
+											<div class="col-sm-9">
+												<select type="select" class="form-control" id="grinderBrand" ng-model="user.grinder" ng-options="x as x.name for x in grinders" ></select>
+											</div>											
+										</div>	
+										<div class="form-group">	
+											<label class="col-sm-3 control-label" for="grinderBrandNotListed">Brand Not Listed?</label>
+											<div class="col-sm-9">	
+												<div class="input-group">				
+													<input type="text" class="form-control" id="grinderBrandNotListed" ng-model="user.addgrinderinput" placeholder="Enter Brand" >
+													<span class="input-group-btn">
+														<button class="btn btn-default ng-click="addGrinder()" value="Add Grinder" type="button">Add</button>
+													</span>
+												</div>	
+											</div>
+										</div>												
+										<div class="form-group">
+											<label class="col-sm-3 control-label" for="grinderModel">Grinder Model: </label>
+											<div class="col-sm-9">
+												<select type="select" class="form-control" id="grinderModel" ng-model="user.model" ng-options="y as y.name for y in models"></select>
+											</div>						
+										</div>	
+										<div class="form-group">	
+											<label class="col-sm-3 control-label" for="modelNumberNotListed">Model Not Listed?</label>	
+											<div class="col-sm-9">
+												<input type="text" class="form-control" id="modelNumberNotListed" ng-model="user.addmodelinput" placeholder="Enter Model" />
+												<button type="button" class="btn btn-primary btn-sm" ng-click="addModel()" value="Add Model">Add</button>
+											</div>
+										</div>		
+										<h5>Available Grinders:</h5>							
+										<ul>						
+											<li ng-repeat="grinder in grinders" class="{{$index}}">{{grinder.name}} {{grinder.model}} | <a ng-click="selectGrinder(grinder.name)">Select this grinder</a></li>
+										</ul>	
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordion" href="#brewing">
+										Add Brewing Gear
+										</a>
+									</h4>
+								</div>
+								<div id="brewing" class="panel-collapse collapse">
+									<div class="panel-body form-horizontal">		
+										<div class="form-group">
+											<label class="col-sm-3 control-label" for="inputBrewer">Brew Equipment: </label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control" id="inputBrewer" placeholder="Input Brewer" ng-model="user.addbrewer">
+											</div>
+											<div class="col-sm-9 col-sm-offset-3">
+												<button type="button" class="btn btn-primary" ng-click="addBrewer()" value="Add Brewer">Add</button>
+											</div>
+										</div>
+										<ul>						
+											<li ng-repeat="brewer in brewers" class="{{$index}}">{{brewer.name}} | <a ng-click="selectBrewer(brewer.name)">Select this brewer</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordion" href="#pouring">
+										Pouring Apparatus
+										</a>
+									</h4>
+								</div>
+								<div id="pouring" class="panel-collapse collapse">
+									<div class="panel-body">
+									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordion" href="#weighing">
+										Weighing
+										</a>
+									</h4>
+								</div>
+								<div id="weighing" class="panel-collapse collapse">
+									<div class="panel-body">
+									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<button type="reset" class="btn btn-default" ng-click="reset()">Reset Form</button>
+								<button type="submit" class="btn btn-default" ng-click="update(user)">Save Changes</button>
+								<button type="submit" class="btn btn-default" ng-click="addBrewProfile()">Add To New Profile</button>
+							</div>
+						</div>
+					</form>	
+				</div>			
+			</div>		
+			<div class="row">
+				<div class="col-md-12">
+					<h3>Available Profiles</h3>
+					<div ng-repeat="profile in brewprofiles" class="col-md-4">
+						<div class="well">
+							<h4>Brew Profile #{{profile.profile}}:</h4>
+							<p>Grinder: {{profile.grinder}}</p>
+							<p>Model #: {{profile.model}}</p>
+							<p>Brewer: {{profile.brewer}}</p>
+							<p class="pull-right">
+								<button class="btn btn-primary">Use Profile</button>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4">					
+					<pre>form = {{user | json}}</pre>
+					<pre>master = {{master | json}}</pre>
+				</div>
+			</div>
+		</div>
