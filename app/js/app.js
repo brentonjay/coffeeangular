@@ -1,22 +1,55 @@
 var app = angular.module('coffeeApp', ['ngRoute']);
 
+	// nothing but routing for the next little bit
 	app.config(function($routeProvider) {
 		$routeProvider
 			.when('/', {
 				templateUrl : 'app/partials/landing.html',
 				controller  : 'landingController'
 			})
+			.when('/almostready', {
+				templateUrl : 'app/partials/almostready.html',
+				controller  : 'almostreadyController'
+			})
 			.when('/signin', {
 				templateUrl : 'app/partials/signin.html',
 				controller  : 'signinController'
+			})
+			.when('/signup', {
+				templateUrl : 'app/partials/signup.html',
+				controller  : 'signupController'
 			})
 			.when('/addgear', {
 				templateUrl : 'app/partials/addgear.html',
 				controller  : 'addgearController'
 			})
-			.when('/almostready', {
-				templateUrl : 'app/partials/almostready.html',
-				controller  : 'almostreadyController'
+			.when('/addbeans', {
+				templateUrl : 'app/partials/addbeans.html',
+				controller  : 'addbeansController'
+			})
+			.when('/ready', {
+				templateUrl : 'app/partials/ready.html',
+				controller  : 'readyController'
+			})
+			.when('/set', {
+				templateUrl : 'app/partials/set.html',
+				controller  : 'setController'
+			})
+			.when('/brew', {
+				templateUrl : 'app/partials/brew.html',
+				controller  : 'brewController'
+			})
+			.when('/log', {
+				templateUrl : 'app/partials/log.html',
+				controller  : 'logController'
+			})			
+			.when('/profile', {
+				templateUrl : 'app/partials/profile.html',
+				controller  : 'profileController'
+			})			
+			.when('/explore', {
+				templateUrl : 'app/partials/explore.html',
+				controller  : 'exploreController'
 			})
 			.otherwise('/', {
 				templateUrl : 'app/partials/landing.html',
@@ -25,22 +58,45 @@ var app = angular.module('coffeeApp', ['ngRoute']);
 	});
 	
 	app.controller('landingController', function($scope){
-		$scope.thing = 'this is a landing thing';
-	});
-	
-	app.controller('signinController', function($scope){
-		$scope.thing = 'this is a signin thing';
-	});
-	
-	app.controller('addgearController', function($scope){
-		$scope.thing = 'this is an addgear thing';
-	});
-	
+		$scope.thing = 'this is a landingController thing';
+	});	
 	app.controller('almostreadyController', function($scope){
-		$scope.thing = 'this is an addgear thing';
-	});
+		$scope.thing = 'this is an almostreadyController thing';
+	});	
+	app.controller('signinController', function($scope){
+		$scope.thing = 'this is a signinController thing';
+	});	
+	app.controller('signupController', function($scope){
+		$scope.thing = 'this is a signupController thing';
+	});	
+	app.controller('addgearController', function($scope){
+		$scope.thing = 'this is an addgearController thing';
+	});	
+	app.controller('addbeansController', function($scope){
+		$scope.thing = 'this is an addgearController thing';
+	});	
+	app.controller('readyController', function($scope){
+		$scope.thing = 'this is an readyController thing';
+	});	
+	app.controller('setController', function($scope){
+		$scope.thing = 'this is an setController thing';
+	});	
+	app.controller('brewController', function($scope){
+		$scope.thing = 'this is an brewController thing';
+	});	
+	app.controller('logController', function($scope){
+		$scope.thing = 'this is an logController thing';
+	});	
+	app.controller('profileController', function($scope){
+		$scope.thing = 'this is an profileController thing';
+	});	
+	app.controller('exploreController', function($scope){
+		$scope.thing = 'this is an exploreController thing';
+	});	
+	// end routing
 	
 
+	// this is the controller for the "add gear" page, pretty much.
 	app.controller('CoffeeController', function($scope, $http){
 		$scope.master = {};
 		
@@ -104,47 +160,67 @@ var app = angular.module('coffeeApp', ['ngRoute']);
 
 		$scope.reset();
 	});
+	
+	
+	// this is the controller for the "add bean" page
+	app.controller('BeanController', function($scope, $http){
+		$scope.roaster = [
+            {id:1,name:'Counter Culture'},
+            {id:2,name:'Stumptown'},
+            {id:3,name:'Sump Coffee'},
+            {id:4,name:'Oak City Coffee Roasters'}
+        ];            
+                        
+        $scope.addRoaster = function() {
+			var r = $scope.user.addroasterinput;
+			$scope.roaster.push({id:$scope.roaster.length + 1,name:r});
+		};
+		
+		$scope.variety = [];
+	});
 
-var timer = angular.module('timerApp', []);
-		timer.controller("TimerController", function($scope,$timeout) {
+
+
+	// this is the controller for the "brew" page, which has the timer on it
+	app.controller("TimerController", function($scope,$timeout) {
+		$scope.bloomVal = 0;
+		$scope.brewVal = 0;
+		$scope.pressVal = 0;
+		var stopped;
+		var totalTime;			
+		
+		$scope.timerVal = function() {
+			var totalTime = ($scope.bloomVal + $scope.brewVal + $scope.pressVal);
+			return totalTime;
+		};
+
+		$scope.submitForm = function(isValid) {
+			if (isValid) {
+				$scope.timer = ($scope.bloomVal + $scope.brewVal + $scope.pressVal);	
+				$scope.bloomPerc = (($scope.bloomVal) / ($scope.timer) * 100);			
+				$scope.brewPerc = (($scope.brewVal) / ($scope.timer) * 100);			
+				$scope.pressPerc = (($scope.pressVal) / ($scope.timer) * 100);	
+			}
+			else {
+			};
+		};
+
+		$scope.countdownInput = function() {
+			stopped = $timeout(function() {
+				console.log($scope.timer);
+				$scope.timer--;   
+				$scope.countdownInput();   
+			}, 1000);
+		};   
+
+		$scope.stop = function() {
+			$timeout.cancel(stopped);
+		}; 
+		
+		$scope.reset = function() {
 			$scope.bloomVal = 0;
 			$scope.brewVal = 0;
 			$scope.pressVal = 0;
-			var stopped;
-			var totalTime;			
-			
-			$scope.timerVal = function() {
-				var totalTime = ($scope.bloomVal + $scope.brewVal + $scope.pressVal);
-				return totalTime;
-			};
-
-			$scope.submitForm = function(isValid) {
-				if (isValid) {
-					$scope.timer = ($scope.bloomVal + $scope.brewVal + $scope.pressVal);	
-					$scope.bloomPerc = (($scope.bloomVal) / ($scope.timer) * 100);			
-					$scope.brewPerc = (($scope.brewVal) / ($scope.timer) * 100);			
-					$scope.pressPerc = (($scope.pressVal) / ($scope.timer) * 100);	
-				}
-				else {
-				};
-			};
-   
-			$scope.countdownInput = function() {
-				stopped = $timeout(function() {
-					console.log($scope.timer);
-					$scope.timer--;   
-					$scope.countdownInput();   
-				}, 1000);
-			};   
-    
-			$scope.stop = function() {
-				$timeout.cancel(stopped);
-			}; 
-			
-			$scope.reset = function() {
-				$scope.bloomVal = 0;
-				$scope.brewVal = 0;
-				$scope.pressVal = 0;
-				$scope.brewprep.$setPristine();
-			};
-		});
+			$scope.brewprep.$setPristine();
+		};
+	});

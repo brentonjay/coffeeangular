@@ -1,9 +1,9 @@
-		<!-- welcome to the addgear partial. enjoy your stay -->
-		<div ng-controller="CoffeeController as coffee" class="container">
+		<!-- welcome to the addbeans partial. enjoy your stay -->	
+		<div ng-controller="BeanController as bean" class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<h1>ADD SOME GEAR</h1>
-					<p class="intro">Nerd time. Go ahead, impress us. Once you add your brewing equipment, you won't have to visit this page again. (Until your birthday.) <a href="/#/addbeans">Then, tell us about the beans you're using</a></p>
+					<h1>ADD BEANS</h1>
+					<p class="intro">Add the beans, then <a href="/#/ready">get ready to rock!</a></p>
 				</div>
 			</div>
 			<div class="row">
@@ -13,47 +13,51 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion" href="#grinding">
-											Add Grinding Equipment
+										<a data-toggle="collapse" data-parent="#accordion" href="#beans">
+											Add Beans
 										</a>
 									</h4>
 								</div>
-								<div id="grinding" class="panel-collapse collapse in">
+								<div id="beans" class="panel-collapse collapse in">
 									<div class="panel-body form-horizontal">
 										<div class="form-group">	
-											<label class="col-sm-3 control-label" for="grinderBrand">Grinder Brand: </label>
+											<label class="col-sm-3 control-label" for="roaster">Roaster: </label>
 											<div class="col-sm-9">
-												<select type="select" class="form-control" id="grinderBrand" ng-model="user.grinder" ng-options="x as x.name for x in grinders" ></select>
+												<select type="select" class="form-control" id="roaster" ng-model="user.roaster" ng-options="x as x.name for x in roaster" ></select>
 											</div>											
 										</div>	
 										<div class="form-group">	
-											<label class="col-sm-3 control-label" for="grinderBrandNotListed">Brand Not Listed?</label>
+											<label class="col-sm-3 control-label" for="RoasterNotListed">Roaster Not Listed?</label>
 											<div class="col-sm-9">	
 												<div class="input-group">				
-													<input type="text" class="form-control" id="grinderBrandNotListed" ng-model="user.addgrinderinput" placeholder="Enter Brand" >
+													<input type="text" class="form-control" id="RoasterNotListed" ng-model="user.addroasterinput" placeholder="Enter Roaster" >
 													<span class="input-group-btn">
-														<button class="btn btn-default" ng-click="addGrinder()" value="Add Grinder" type="button">Add</button>
+														<button class="btn btn-default" ng-click="addRoaster()" value="Add Roaster" type="button">Add</button>
 													</span>
 												</div>	
 											</div>
 										</div>												
 										<div class="form-group">
-											<label class="col-sm-3 control-label" for="grinderModel">Grinder Model: </label>
+											<label class="col-sm-3 control-label" for="coffeeVariety">Coffee Variety: </label>
 											<div class="col-sm-9">
-												<select type="select" class="form-control" id="grinderModel" ng-model="user.model" ng-options="y as y.name for y in models"></select>
+												<select type="select" class="form-control" id="coffeeVariety" ng-model="user.model" ng-options="y as y.name for y in coffeeVariety"></select>
 											</div>						
 										</div>	
 										<div class="form-group">	
-											<label class="col-sm-3 control-label" for="modelNumberNotListed">Model Not Listed?</label>	
+											<label class="col-sm-3 control-label" for="coffeeVarietyNotListed">Variety Not Listed?</label>	
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="modelNumberNotListed" ng-model="user.addmodelinput" placeholder="Enter Model" />
-												<button type="button" class="btn btn-primary btn-sm" ng-click="addModel()" value="Add Model">Add</button>
+												<input type="text" class="form-control" id="coffeeVarietyNotListed" ng-model="user.addmodelinput" placeholder="Enter Model" />
+												<button type="button" class="btn btn-primary btn-sm" ng-click="addVariety()" value="Add Variety">Add</button>
 											</div>
-										</div>		
+										</div>	
+										
+										<!--	
 										<h5>Available Grinders:</h5>							
 										<ul>						
 											<li ng-repeat="grinder in grinders" class="{{$index}}">{{grinder.name}} {{grinder.model}} | <a ng-click="selectGrinder(grinder.name)">Select this grinder</a></li>
-										</ul>	
+										</ul>											
+										-->
+										
 									</div>
 								</div>
 							</div>
