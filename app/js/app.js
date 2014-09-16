@@ -103,7 +103,7 @@ var app = angular.module('coffeeApp', ['ngRoute', 'ui.bootstrap']);
 		$scope.brewers = [];
 		
 		$scope.grinders = [
-            {id:1,name:'Baratza'},
+            {id:1,name:'Baratza',models:[{m-id:1,name:'1200b'},{m-id:2,name:'13000b'},{m-id:3,name:'35939b'},{m-id:4,name:'953883b'},{m-id:5,name:'123b'}]},
             {id:2,name:'Cuisinart'},
             {id:3,name:'Capresso'},
             {id:4,name:'Bodum'},
