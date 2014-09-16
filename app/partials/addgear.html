@@ -23,7 +23,9 @@
 										<div class="form-group">	
 											<label class="col-sm-3 control-label" for="grinderBrand">Grinder Brand: </label>
 											<div class="col-sm-9">
-												<select type="select" class="form-control" id="grinderBrand" ng-model="user.grinder" ng-options="x as x.name for x in grinders" ></select>
+												<!-- <select type="select" class="form-control" id="grinderBrand" ng-model="user.grinder" ng-options="x as x.name for x in grinders" ></select> -->
+												<input type="text" ng-model="user.grinder" typeahead="x as x.name for x in grinders | filter:$viewValue | limitTo:8" class="form-control">
+
 											</div>											
 										</div>	
 										<div class="form-group">	

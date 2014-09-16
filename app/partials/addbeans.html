@@ -12,11 +12,7 @@
 						<div class="panel-group" id="accordion">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion" href="#beans">
-											Add Beans
-										</a>
-									</h4>
+									<h4 class="panel-title">Add Beans</h4>
 								</div>
 								<div id="beans" class="panel-collapse collapse in">
 									<div class="panel-body form-horizontal">
@@ -46,80 +42,24 @@
 										<div class="form-group">	
 											<label class="col-sm-3 control-label" for="coffeeVarietyNotListed">Variety Not Listed?</label>	
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="coffeeVarietyNotListed" ng-model="user.addmodelinput" placeholder="Enter Model" />
-												<button type="button" class="btn btn-primary btn-sm" ng-click="addVariety()" value="Add Variety">Add</button>
+												<input type="text" class="form-control" id="coffeeVarietyNotListed" ng-model="user.addcoffeevarietyinput" placeholder="Enter Model" />
+												<span class="input-group-btn">
+													<button type="button" class="btn btn-primary btn-sm" ng-click="addCoffeeVariety()" value="Add Variety">Add</button>
+												</span>
+											</div>
+										</div>	
+										<div class="form-group">	
+											<label class="col-sm-3 control-label" for="addRoastDate">Roast Date?</label>	
+											<div class="col-sm-9">
+												<input type="date" class="form-control" id="addRoastDate" ng-model="user.addRoastDate" placeholder="Roasted On?"  />
+												<span class="input-group-btn">
+													<button type="button" class="btn btn-primary btn-sm" ng-click="addRoastDate()" value="Add Roast Date">Add</button>
+												</span>
 											</div>
 										</div>	
 										
-										<!--	
-										<h5>Available Grinders:</h5>							
-										<ul>						
-											<li ng-repeat="grinder in grinders" class="{{$index}}">{{grinder.name}} {{grinder.model}} | <a ng-click="selectGrinder(grinder.name)">Select this grinder</a></li>
-										</ul>											
-										-->
-										
 									</div>
 								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion" href="#brewing">
-										Add Brewing Gear
-										</a>
-									</h4>
-								</div>
-								<div id="brewing" class="panel-collapse collapse">
-									<div class="panel-body form-horizontal">		
-										<div class="form-group">
-											<label class="col-sm-3 control-label" for="inputBrewer">Brew Equipment: </label>
-											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputBrewer" placeholder="Input Brewer" ng-model="user.addbrewer">
-											</div>
-											<div class="col-sm-9 col-sm-offset-3">
-												<button type="button" class="btn btn-primary" ng-click="addBrewer()" value="Add Brewer">Add</button>
-											</div>
-										</div>
-										<ul>						
-											<li ng-repeat="brewer in brewers" class="{{$index}}">{{brewer.name}} | <a ng-click="selectBrewer(brewer.name)">Select this brewer</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion" href="#pouring">
-										Pouring Apparatus
-										</a>
-									</h4>
-								</div>
-								<div id="pouring" class="panel-collapse collapse">
-									<div class="panel-body">
-									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion" href="#weighing">
-										Weighing
-										</a>
-									</h4>
-								</div>
-								<div id="weighing" class="panel-collapse collapse">
-									<div class="panel-body">
-									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<button type="reset" class="btn btn-default" ng-click="reset()">Reset Form</button>
-								<button type="submit" class="btn btn-default" ng-click="update(user)">Save Changes</button>
-								<button type="submit" class="btn btn-default" ng-click="addBrewProfile()">Add To New Profile</button>
 							</div>
 						</div>
 					</form>	
