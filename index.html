@@ -7,11 +7,8 @@
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href='http://fonts.googleapis.com/css?family=Lato:300,900|Allan&effect=wallpaper' rel='stylesheet' type='text/css'>
-	</head>
-	<body>		
-		<div ng-view></div>
-		
 		<link rel="stylesheet" type="text/css" href="/app/less/bootstrap.css"/>		
+ 		
 		<!--
 		<link rel="stylesheet" type="text/less" href="/app/less/bootstrap.less"/>		
 		<script>
@@ -27,15 +24,21 @@
 			};
 		</script>
 		-->
+
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.4/less.min.js"></script> -->
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>	  
-		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+		<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.4/less.min.js"></script> -->	 
+
+	</head>
+	<body>		
+		<div ng-view></div>
+
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.js"></script>		
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-route.js"></script>
-		<script src="/app/js/app.js"></script>
 		<script src="/app/js/ui-bootstrap-tpls-0.11.0.min.js"></script>
-		
-		
+		<script src="/app/js/app.js"></script>		
+		<script src="/app/js/controllers.js"></script>		
+		<script src="/app/js/other-controllers.js"></script>		
+				
 
 	</body>
 </html>

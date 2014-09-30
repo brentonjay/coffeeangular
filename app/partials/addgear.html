@@ -6,16 +6,16 @@
 					<p class="intro">Nerd time. Go ahead, impress us. Once you add your brewing equipment, you won't have to visit this page again. (Until your birthday.) <a href="/#/addbeans">Then, tell us about the beans you're using</a></p>
 				</div>
 			</div>
-			<div class="row" ng-controller="AccordionDemoCtrl">
+			<div class="row">
 				<div class="col-md-12">
 					<accordion>
-						<accordion-group heading="Add Grinding Equipment" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+						<accordion-group heading="Add Grinding Equipment" is-open="accordionStatus.isFirstOpen" is-disabled="accordionStatus.isFirstDisabled">
 							<div class="form-horizontal">
 								<div class="form-group">	
 									<label class="col-sm-3 control-label" for="grinderBrand">Grinder Brand: </label>
 									<div class="col-sm-9">
 										<!-- <select type="select" class="form-control" id="grinderBrand" ng-model="user.grinder" ng-options="x as x.name for x in grinders" ></select> -->
-										<input type="text" ng-model="user.grinder" typeahead="x as x.name for x in grinders | filter:$viewValue | limitTo:8" class="form-control">
+										<input type="text" ng-model="user.grinder" typeahead="x as x.name for x in grinders | filter:$viewValue | limitTo:8" typeahead-on-select="selectGrinder($item, $model, $label)" class="form-control">
 
 									</div>											
 								</div>	
