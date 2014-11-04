@@ -9,17 +9,44 @@
 			<div class="row">
 				<div class="col-md-12">
 					<accordion>
-						<accordion-group heading="Add Grinding Equipment" is-open="accordionStatus.isFirstOpen" is-disabled="accordionStatus.isFirstDisabled">
+						<accordion-group heading="Add Grinding Equipment" is-open="accordionStatus.isFirstOpen" is-disabled="accordionStatus.isFirstDisabled">	
+							<h5>Available Grinders | <input ng-model="searchGrinders" placeholder="Type to Refine List" /> | </h5>							
+							<div class="row">
+								<div ng-repeat="grinder in grinders | filter:searchGrinders | orderBy:'name'" class="col-md-3">
+									<div class="panel panel-default panel-{{$index}}">
+										<div class="panel-heading">
+											<h3 class="panel-title">{{grinder.name}}</h3>
+										</div>
+										<div class="panel-body" ng-class="{'bg-info': grinder.checked}" >
+											<p>{{grinder.name}}</p>
+											<p><label class="btn btn-primary" ng-class="{active: grinder.checked}"><input type="checkbox" ng-model="grinder.checked" ng-click="grinderCheck(grinder)" class="hidden">Select this Grinder</label></p>
+											<p>Am I checked? {{grinder.checked}}</p>
+											<ul ng-repeat="model in grinder.models" ng-show="grinder.checked">
+												<li>{{model.model_id}} | {{model.name}}</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="panel panel-default notlisted">
+										<div class="panel-heading">
+											<h3 class="panel-title">Grinder Maker Not Listed?</h3>
+										</div>
+										<div class="panel-body">
+											<button class="btn btn-default" ng-click="grinderBlock = !grinderBlock">Add Grinder</button>
+										</div>
+									</div>
+								</div>								
+							</div>	
 							<div class="form-horizontal">
-								<div class="form-group">	
+								<div class="form-group hidden">	
 									<label class="col-sm-3 control-label" for="grinderBrand">Grinder Brand: </label>
-									<div class="col-sm-9">
-										<!-- <select type="select" class="form-control" id="grinderBrand" ng-model="user.grinder" ng-options="x as x.name for x in grinders" ></select> -->
+									<div class="col-sm-9">										
 										<input type="text" ng-model="user.grinder" typeahead="x as x.name for x in grinders | filter:$viewValue | limitTo:8" typeahead-on-select="selectGrinder($item, $model, $label)" class="form-control">
 
 									</div>											
 								</div>	
-								<div class="form-group">	
+								<div collapse="grinderBlock" class="form-group">	
 									<label class="col-sm-3 control-label" for="grinderBrandNotListed">Brand Not Listed?</label>
 									<div class="col-sm-9">	
 										<div class="input-group">				
@@ -42,11 +69,7 @@
 										<input type="text" class="form-control" id="modelNumberNotListed" ng-model="user.addmodelinput" placeholder="Enter Model" />
 										<button type="button" class="btn btn-primary btn-sm" ng-click="addModel()" value="Add Model">Add</button>
 									</div>
-								</div>		
-								<h5>Available Grinders:</h5>							
-								<ul>						
-									<li ng-repeat="grinder in grinders" class="{{$index}}">{{grinder.name}} {{grinder.model}} | <a ng-click="selectGrinder(grinder.name)">Select this grinder</a></li>
-								</ul>	
+								</div>	
 							</div>
 						</accordion-group>
 						<accordion-group heading="Add Brewing Gear">

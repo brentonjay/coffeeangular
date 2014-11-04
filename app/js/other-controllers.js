@@ -10,16 +10,274 @@
 			isFirstDisabled: false
 		};
 		
+		// opens the 'add new grinder' input
+		$scope.grinderBlock = true;
+		
 		$scope.master = {};
 		
 		$scope.brewers = [];
 		
 		$scope.grinders = [
-            {id:1,name:"Baratza",models:[{mid:1,name:"1200b"},{mid:2,name:"13000b"},{mid:3,name:"35939b"},{mid:4,name:"953883b"},{mid:5,name:"123b"}]},
-            {id:2,name:"Cuisinart"},
-            {id:3,name:"Capresso"},
-            {id:4,name:"Bodum"},
-            {id:5,name:"Other"}
+            {
+				id:1,
+				name:"Baratza",
+				models:	[
+					{
+						model_id:1,
+						name:"Baratza1200b"
+					},
+					{
+						model_id:2,
+						name:"Baratza13000b"
+					},
+					{
+						model_id:3,
+						name:"Baratza35939b"
+					},
+					{
+						model_id:4,
+						name:"Baratza953883b"
+					},
+					{
+						model_id:5,
+						name:"Baratza123b"
+					}
+				]
+			},
+            {	
+				id:2,
+				name:"Cuisinart",
+				models:	[
+					{
+						model_id:1,
+						name:"Cuisinart1200b"
+					},
+					{
+						model_id:2,
+						name:"Cuisinart13000b"
+					},
+					{
+						model_id:3,
+						name:"Cuisinart35939b"
+					},
+					{
+						model_id:4,
+						name:"Cuisinart953883b"
+					},
+					{
+						model_id:5,
+						name:"Cuisinart123b"
+					}
+				]
+			},
+            {
+				id:3,
+				name:"Capresso",
+				models:	[
+					{
+						model_id:1,
+						name:"Capresso1200b"
+					},
+					{
+						model_id:2,
+						name:"Capresso13000b"
+					},
+					{
+						model_id:3,
+						name:"Capresso35939b"
+					},
+					{
+						model_id:4,
+						name:"Capresso953883b"
+					},
+					{
+						model_id:5,
+						name:"1Capresso23b"
+					}
+				]
+			},
+            {
+				id:4,
+				name:"Bodum",
+				models:	[
+					{
+						model_id:1,
+						name:"Bodum1200b"
+					},
+					{
+						model_id:2,
+						name:"Bodum13000b"
+					},
+					{
+						model_id:3,
+						name:"Bodum35939b"
+					},
+					{
+						model_id:4,
+						name:"Bodum953883b"
+					},
+					{
+						model_id:5,
+						name:"Bodum123b"
+					}
+				]
+			},
+            {
+				id:5,
+				name:"Bunn",
+				models:	[
+					{
+						model_id:1,
+						name:"Bunn1200b"
+					},
+					{
+						model_id:2,
+						name:"Bunn13000b"
+					},
+					{
+						model_id:3,
+						name:"Bunn35939b"
+					},
+					{
+						model_id:4,
+						name:"Bunn953883b"
+					},
+					{
+						model_id:5,
+						name:"Bunn123b"
+					}
+				]
+			},
+            {
+				id:6,
+				name:"Black and Decker",
+				models:	[
+					{
+						model_id:1,
+						name:"Black1200b"
+					},
+					{
+						model_id:2,
+						name:"Black13000b"
+					},
+					{
+						model_id:3,
+						name:"Black35939b"
+					},
+					{
+						model_id:4,
+						name:"Black953883b"
+					},
+					{
+						model_id:5,
+						name:"Black123b"
+					}
+				]
+			},
+            {
+				id:7,
+				name:"Krups",
+				models:	[
+					{
+						model_id:1,
+						name:"Krups1200b"
+					},
+					{
+						model_id:2,
+						name:"Krups13000b"
+					},
+					{
+						model_id:3,
+						name:"Krups35939b"
+					},
+					{
+						model_id:4,
+						name:"Krups953883b"
+					},
+					{
+						model_id:5,
+						name:"Krups123b"
+					}
+				]
+			},
+            {
+				id:8,
+				name:"Hario",
+				models:	[
+					{
+						model_id:1,
+						name:"Hario1200b"
+					},
+					{
+						model_id:2,
+						name:"Hario13000b"
+					},
+					{
+						model_id:3,
+						name:"Hario35939b"
+					},
+					{
+						model_id:4,
+						name:"Hario953883b"
+					},
+					{
+						model_id:5,
+						name:"Hario123b"
+					}
+				]
+			},
+            {
+				id:9,
+				name:"Hamilton Beach",
+				models:	[
+					{
+						model_id:1,
+						name:"Hamilton Beach1200b"
+					},
+					{
+						model_id:2,
+						name:"Hamilton Beach13000b"
+					},
+					{
+						model_id:3,
+						name:"Hamilton Beach35939b"
+					},
+					{
+						model_id:4,
+						name:"Hamilton Beach953883b"
+					},
+					{
+						model_id:5,
+						name:"Hamilton Beach123b"
+					}
+				]
+			},
+            {
+				id:10,
+				name:"Breville",
+				models:	[
+					{
+						model_id:1,
+						name:"Breville1200b"
+					},
+					{
+						model_id:2,
+						name:"Breville13000b"
+					},
+					{
+						model_id:3,
+						name:"Breville35939b"
+					},
+					{
+						model_id:4,
+						name:"Breville953883b"
+					},
+					{
+						model_id:5,
+						name:"Breville123b"
+					}
+				]
+			}
 		];
             
         $scope.addGrinder = function() {
@@ -31,10 +289,18 @@
 			$scope.$item = $item;
 			$scope.$model = $model;
 			$scope.$label = $label;
-			// console.log("ITEM = " + $item + "MODEL = " + $model + "LABEL = " + $label);
-			console.log($model);
+			console.log("ITEM = " + $item + "MODEL = " + $model + "LABEL = " + $label);
+			// console.log($model);
 			
 			// where were you when you stopped working? well, you were just discovering how to get to the callback method with the typeahead box, which is good. congrats on that! you thought maybe what you could do on the typeahead was to loop through the array of existing grinders, looking for the $label, and comparing that to what's in the input box. if you find it, cool, if not, present the option to add that grinder to the list. took you long enough, though, you know what i mean?
+		};
+		
+		// this function makes sure only one grinder is checked at a time
+		$scope.grinderCheck = function(grinder) {
+			angular.forEach($scope.grinders, function(item) {
+				item.checked = false;
+			});
+			grinder.checked = true;
 		};
 		
 		$scope.models = [
